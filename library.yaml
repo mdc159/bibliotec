@@ -28,4 +28,8 @@ library:
       description: Read-only verifier persona (no write/edit) that independently re-checks builder turns — IndyDevDan verifier pattern
       source: /home/hammer/Projects/IDD/repos/the-verifier-agent-main/.pi/verifier/agents/verifier.md
 
+    - name: verifier-herdr
+      description: Herdr-native read-only verifier persona with corrective feedback routed through named agents
+      source: /home/hammer/Projects/herdr-verifier/personas/verifier.md
+
   prompts: []
