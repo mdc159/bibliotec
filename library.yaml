@@ -10,6 +10,22 @@ default_dirs:
     - global: ~/.claude/commands/
 
 library:
-  skills: []
-  agents: []
+  skills:
+    - name: herdr
+      description: Control Herdr terminal multiplexer for coding agents (panes, tabs, workspaces, agent lifecycle)
+      source: /home/hammer/.agents/skills/herdr/SKILL.md
+
+    - name: planf3
+      description: Plans For Fable Five — planning meta-skill producing self-contained HTML plans with build/validate workflows
+      source: /home/hammer/Projects/IDD/repos/planf3-main/.claude/skills/planf3/SKILL.md
+
+    - name: library
+      description: The Library itself — private-first distribution of skills, agents, and prompts
+      source: /home/hammer/.claude/skills/library/SKILL.md
+
+  agents:
+    - name: verifier
+      description: Read-only verifier persona (no write/edit) that independently re-checks builder turns — IndyDevDan verifier pattern
+      source: /home/hammer/Projects/IDD/repos/the-verifier-agent-main/.pi/verifier/agents/verifier.md
+
   prompts: []
