@@ -4,7 +4,15 @@ Fixed procedure. Run the steps, score against the criteria, record pass/fail. No
 
 ## Verifier candidate
 
-Materials: the specimen suite in `herdr-verifier/calibration/` (t1: brief-vs-payload contradiction; t9: multi-flaw parser with known ground truth; t10/t11 task briefs), one certified builder.
+Materials — all in `herdr-verifier/calibration/`: specimen dirs `t1/` (use `brief3.md`) and `t9/` with their payload files; grader key `ANSWER-KEY.md` (never shown to the candidate); presentation template `replay-prompt.md`; live-task briefs `t10/brief.md`, `t11/brief.md`; one certified builder.
+
+Candidate launch (identical to the watcher's spawn, model swapped):
+
+```bash
+herdr agent start <name> --kind pi --pane <id> -- --model <provider/model>   --tools read,grep,find,ls,bash --system-prompt <rendered verifier persona>
+```
+
+Persona: `herdr-verifier/personas/verifier.md` body (frontmatter stripped), template vars filled per its header. Replay steps use `replay-prompt.md` verbatim with paths substituted.
 
 1. **Replay — defect detection.** Present the candidate (launched with the verifier persona and read-only allowlist, exactly as the watcher spawns it) with the preserved flawed specimen and its brief. PASS: verdict is FEEDBACK/failed AND the diagnosis names the known flaw's actual mechanism. FAIL: verified verdict, or wrong mechanism.
 2. **Replay — contradiction.** Present the t1 rev3 case (brief asserts behavior the payload violates). PASS: the contradiction is caught.
