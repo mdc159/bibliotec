@@ -13,3 +13,12 @@ For any fleet agent (Hermes, Claude, Pi workers, …) that has built something w
 5. **Verify from anywhere.** After merge, on any node: `library use <name>` — confirm the asset arrives intact. That pull is the publication test.
 
 Same procedure for all three types — skills, agents (role/persona definitions), prompts. An agent that cannot open PRs hands steps 3–4 to its orchestrator with the entry fields prepared.
+
+## Porting another harness's asset
+
+Found a cataloged skill written for a different harness (a Hermes skill you want on Claude, or vice versa)? Adapt it locally and verify the port works — then decide:
+
+- **Differences small** (paths, tool names, phrasing): push portability back into the ORIGINAL asset — neutral core plus inline harness notes — so one entry serves every harness. Prefer this; forks are pre-ordered drift.
+- **Differences structural** (the harness's internals genuinely diverge): publish the port as its own entry, suffixed by harness (`<name>-claude`), with provenance in the description pointing at the origin entry so lineage is tracked and improvements can propagate.
+
+The curator loop periodically reviews the catalog for fork drift and proposes merges.
