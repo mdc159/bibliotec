@@ -9,7 +9,7 @@ Fixed procedure. Run the steps, score against the criteria, record pass/fail. No
 
 ## Verifier candidate
 
-Materials — all in `herdr-verifier/calibration/`: specimen dirs `t1/` (use `brief3.md`) and `t9/` with their payload files; grader key `ANSWER-KEY.md` (never shown to the candidate); presentation template `replay-prompt.md`; live-task briefs `t10/brief.md`, `t11/brief.md`; one certified builder.
+Materials — all in `herdr-verifier/calibration/`: specimen dirs `t1/` (use `brief3.md`) and `t9/` with their payload files; grader key `gauntlet/ANSWER-KEY.md` in bibliotec — kept OUTSIDE the candidate-facing specimen tree; never referenced in candidate prompts. Integrity check after grading: search the candidate's session log for reads of the key path — any hit voids the exam; presentation template `replay-prompt.md`; live-task briefs `t10/brief.md`, `t11/brief.md`; one certified builder.
 
 Candidate launch (identical to the watcher's spawn, model swapped):
 
