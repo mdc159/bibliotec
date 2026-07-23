@@ -1,6 +1,6 @@
 ---
 name: orchestration-playbook
-description: Procedures for orchestrating the herdr + Pi worker fleet — launching, driving, and verifying agent workers. Load when acting as fleet orchestrator.
+description: Use when the user describes a project, mission, or goal to build, or asks for multi-agent orchestration — assume or recruit the orchestrator role and follow these procedures (worker launch, routing tiers, verification, PR discipline, Done-means finish lines). Do NOT load for quick one-off tasks that need no fleet.
 ---
 
 # Orchestration Playbook
