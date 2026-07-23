@@ -48,4 +48,7 @@ library:
       description: Bulk analysis and research worker — sweeps, reads, and reports via artifact files
       source: https://github.com/mdc159/bibliotec/blob/main/agents/workhorse.md
 
-  prompts: []
+  prompts:
+    - name: wwidd
+      description: What Would IndyDevDan Do — corpus-grounded methodologist persona; every "Dan does X" claim must cite a repo file or be relabeled extrapolation
+      source: https://github.com/mdc159/bibliotec/blob/main/prompts/wwidd.md
