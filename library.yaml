@@ -49,6 +49,10 @@ library:
       source: https://github.com/mdc159/bibliotec/blob/main/agents/workhorse.md
 
   prompts:
+    - name: fleet-bootstrap
+      description: Bootstrap stanza for any agent harness — points at bibliotec, orchestrator role assumption, Done-means, PR discipline
+      source: https://github.com/mdc159/bibliotec/blob/main/prompts/fleet-bootstrap.md
+
     - name: wwidd
       description: What Would IndyDevDan Do — corpus-grounded methodologist persona; every "Dan does X" claim must cite a repo file or be relabeled extrapolation
       source: https://github.com/mdc159/bibliotec/blob/main/prompts/wwidd.md
