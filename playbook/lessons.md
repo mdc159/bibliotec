@@ -2,6 +2,10 @@
 
 History, not procedure. The playbook states only the correct way; this register records where we came from and why conventions changed, so confusion has a lookup path. Newest first.
 
+## 2026-07-23 — Sandbox mandate rejected; security ships as opt-in capability
+
+The 121-62 draft rule "uncertified builder ⇒ code runs in the microVM, period" was rejected by the user as a blanket mandate: this is an R&D rig, the user sets the risk posture, and security measures enter the playbook as capabilities with how-tos, engaged by choice (unattended runs, untrusted external code) — never as defaults. The mandate phrasing had crept in at mission-brief level, not from a user decision — a reminder to quote decisions at their stated scope and not let a brief's wording harden into doctrine. Playbook now carries "E2B sandbox execution (capability on the shelf)".
+
 ## 2026-07-23 — Watcher hung waiting `--until idle` on Pi builders that settle as `done`
 
 The verifier watcher's first E2B cycle never fired: `herdr agent wait <builder> --until idle` blocks forever because Pi builders settle in state `done`, which `--until idle` never matches. Bare `herdr agent wait` (no `--until`) matches idle, done, or blocked — the correct settle set. Fixed in `herdr-verifier/watcher.py` (`wait_settled()`, regression-tested against a fake builder that settles as `done`). General rule: when waiting on lifecycle states, wait on the full settle set, not one named state.

@@ -110,6 +110,22 @@ just demo <builder-name>          # watch exactly one live turn
 
 The watcher records evidence to `runs/YYYY-MM-DD.jsonl`; verdicts are `VERIFIED` or `FEEDBACK`, with human escalation after the configured consecutive-feedback cap.
 
+## E2B sandbox execution (capability on the shelf)
+
+Optional isolation, engaged when the orchestrator or user chooses it — for example unattended Gauntlet runs or genuinely untrusted external code. Not a default and not a mandate: this is an R&D rig and the user sets the risk posture. Verified live 2026-07-23 (Linear 121-62; evidence in `herdr-verifier/runs/`).
+
+- **One-off command in a microVM** (from `~/Projects/herdr-verifier`):
+
+  ```bash
+  uv run sandbox/run_in_e2b.py --file <path> [--file ...] [--pip <pkg> ...] -- <command...>
+  ```
+
+  Boots a fresh E2B sandbox, uploads each file to `/home/user/work/`, installs `--pip` packages, runs the command there, streams output, prints `SANDBOX_ID:` and `EXIT_CODE:`, propagates the exit code, and always kills the sandbox. `E2B_API_KEY` comes from the environment or the repo-root `.env` (gitignored, orchestrator-placed).
+
+- **Verification cycles with in-sandbox execution**: `just verify-e2b <builder>` / `just demo-e2b <builder>`. Same watcher, but the per-turn template `prompts/verify_on_stop_e2b.md` has the verifier run all candidate code inside the microVM and cite the `SANDBOX_ID:`/`EXIT_CODE:` lines as evidence; host bash stays read-only for the duration of that run by the template's design. (That containment applies only while E2B mode is selected — plain `just verify`/`demo` are unchanged.)
+
+- Reference implementation: `~/Projects/IDD/repos/agent-sandboxes` (re-fetch from disler upstream on a new node).
+
 ## Fleet hygiene
 
 Workers start fresh and end released: spawn a new agent per mission, release its pane when the work is delivered (artifacts and repos hold the results; pane context is disposable runtime state). This is the upstream pattern — cmux teams boot "a fresh 5-agent team as a new workspace" and their roster files are "regenerated on every spawn" (`learning-cmux-with-agents`: `.claude/commands/spawn-fs-team.md`, `.team/README.md`). Persistent staff (a verifier, a scribe) is the deliberate exception, restarted fresh at mission boundaries.
