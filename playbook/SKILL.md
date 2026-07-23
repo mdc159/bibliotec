@@ -26,6 +26,14 @@ The orchestrator is a role, not a particular agent — any capable agent (Claude
 
 Definitions reference tiers (columns 1) so they stay portable across devices; each device resolves a tier to whatever subscription it holds.
 
+## Work intake — many doors, one ledger
+
+Linear is the plan of record: every piece of intended work becomes a Linear issue with a "Done means:" line, and agents work from Linear alone. Capture through whichever door is nearest:
+
+- Tell any fleet agent — it files the Linear issue (with Done-means) on the spot.
+- File directly in the Linear app.
+- File a GitHub issue on the relevant repo — flows to Linear via the GitHub Issues sync (enabled per repo in Linear's integration settings; until a repo's sync is on, the orchestrator sweeps its GitHub issues into Linear when seen).
+
 ## Worker launch
 
 Use this sequence for every worker.
