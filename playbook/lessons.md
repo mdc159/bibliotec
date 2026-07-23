@@ -2,9 +2,9 @@
 
 History, not procedure. The playbook states only the correct way; this register records where we came from and why conventions changed, so confusion has a lookup path. Newest first.
 
-## 2026-07-22 — Workers are Pi-hosted; direct `--kind codex` retired
+## 2026-07-22 — GPT models launch via Pi's `openai-codex` provider; direct `--kind codex` retired
 
-All workers now launch as Pi agents (`--kind pi --model <provider/model>`); GPT models route through the `openai-codex` provider on Codex OAuth billing. Direct Codex launches were retired because the Codex TUI runs on the terminal alternate screen (output unreadable via pane scrollback), resumed sessions swallowed the first prompt, and it required per-kind exceptions (`--dangerously-bypass-approvals-and-sandbox`, blank `OPENAI_API_KEY` in the pane env to protect OAuth billing). Pi hosting gives uniform lifecycle authority, instant prompt delivery, and observability.
+GPT models route through Pi (`--kind pi --model openai-codex/...`) on Codex OAuth billing. Direct Codex launches were retired because the Codex TUI runs on the terminal alternate screen (output unreadable via pane scrollback), resumed sessions swallowed the first prompt, and it required per-kind exceptions (`--dangerously-bypass-approvals-and-sandbox`, blank `OPENAI_API_KEY` in the pane env to protect OAuth billing). Scope note: this decision covers only the GPT/Codex path — other herdr-integrated kinds remain valid workers, with Pi preferred (not mandated) for scripted automation. A same-day playbook draft overstated this as "all workers are Pi agents"; the user corrected it within hours — an argument for keeping decisions narrow and quoting them, not paraphrasing them.
 
 ## 2026-07-22 — Vault demoted from canon to documentation
 

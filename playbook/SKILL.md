@@ -5,11 +5,11 @@ description: Canonical procedures for orchestrating the herdr + Pi worker fleet 
 
 # Orchestration Playbook
 
-This is canon: the correct way to run the fleet. Procedures enter this document only after being verified against the installed tools (currently herdr 0.7.5, Pi 0.81.1). When reality and this document disagree, verify against the tool, then overwrite this document. Retired conventions and the mistakes that retired them live in [lessons.md](lessons.md) — consult it when something here seems to contradict older material.
+This is the correct way to run the fleet. Procedures enter this document only after being verified against the installed tools (currently herdr 0.7.5, Pi 0.81.1). When reality and this document disagree, verify against the tool, then overwrite this document. Retired conventions and the mistakes that retired them live in [lessons.md](lessons.md) — consult it when something here seems to contradict older material.
 
 ## Roles and model routing
 
-The orchestrator (Claude Fable) writes briefs, plans, reviews results, and maintains this canon. Workers do everything else. Every worker is a Pi-hosted agent: `--kind pi --model <provider/model>`. One integration surface, uniform lifecycle authority, instant prompt delivery, Pi observability.
+The orchestrator (Claude Fable) writes briefs, plans, reviews results, and maintains this playbook. Workers do everything else. Any herdr-integrated agent kind is a valid worker. GPT models run through Pi's `openai-codex` provider (Codex OAuth billing) rather than the Codex CLI. For scripted automation, prefer Pi-hosted workers where equivalent — Pi's herdr integration carries lifecycle authority, instant prompt delivery, and observability.
 
 | Need | Route (current resolution) |
 |---|---|
@@ -38,10 +38,11 @@ Use this sequence for every worker.
    herdr pane wait-output <pane-id> --match '<shell-prompt>' --timeout 30000
    ```
 
-3. **Start a fresh Pi agent** with the model routed per tier:
+3. **Start a fresh agent** of the kind the worker definition calls for:
 
    ```bash
-   herdr agent start <name> --kind pi --pane <pane-id> -- --model <provider/model>
+   herdr agent start <name> --kind <kind> --pane <pane-id> -- <kind-flags>
+   # most common: --kind pi -- --model <provider/model>  (routed per tier)
    ```
 
 4. **Submit the first prompt synchronously**, directing output to an artifact file:
