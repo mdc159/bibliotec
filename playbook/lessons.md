@@ -25,3 +25,15 @@ Same-tab `pane move` no-ops; restructure via split → `pane swap` → close pla
 ## 2026-07-22 — Seeded-flaw live demo could not fool GLM-5.2 + K3
 
 Attempting to demo the verifier's FAIL path by asking GLM-5.2 to build flawed artifacts failed: the model stayed correct and honest. Escalation path proven by unit tests only; live calibration (orchestrator-authored flaws) planned.
+
+## 2026-07-23 — Builder honesty defeats seeded-flaw delivery
+
+Three mechanisms for delivering orchestrator-authored flaws through a live builder turn all failed against GLM-5.2: as courier it ran the forbidden tests and disclosed; as silent deliverer its truthful claim made the verdict legitimately VERIFIED; given a brief whose payload contradicted its stated requirement, it detected the contradiction by unprompted arithmetic and reported it. Live false claims come from weak models making natural mistakes (Qwen3.5-9B's malformed tool call yielded the first live FEEDBACK and the cap-3 escalation), not from aligned models pretending. Gauntlet candidates for the failure path should be genuinely weak, not instructed to deceive.
+
+## 2026-07-23 — Verifier run records under-persist evidence
+
+`runs/*.jsonl` entries store slice bounds and digests but not the brief/task name, builder session path, or builder model; scorecard collation had to infer them. When certification evidence matters, record launch details (model, provider, brief path) alongside the run, or improve `append_event()`.
+
+## 2026-07-23 — Pi model patterns can resolve to surprise providers
+
+`--model "Qwen3.5-9B"` resolved to the huggingface provider and burned the small HF included-credit pool; the assumption had been OpenRouter. Rule now in the playbook: name workers `<role>-<model>-<provider>` and read the provider back from the start response before assuming who pays.
