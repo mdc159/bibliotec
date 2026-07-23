@@ -1,0 +1,26 @@
+# CodeRabbit configuration — bibliotec
+# Rubric grounded in the house authority: IndyDevDan's practice (see playbook/SKILL.md header).
+
+tone_instructions: "Terse, evidence-first, no flattery. End every review summary with 'Score: N/5' per the repo rubric. Fewer, higher-signal comments."
+
+reviews:
+  high_level_summary: true
+  high_level_summary_instructions: |
+    End the summary with "Score: N/5" — one point per criterion met:
+    1. Truthful: descriptions and claims match what the change actually does; nothing asserted without support.
+    2. Receipts: factual claims cite their source (file, log, upstream repo); no vibes.
+    3. Minimal & positive: the smallest change that does the job, stated as how-to procedure — no rule-creep, no mandates, no "never/don't" doctrine.
+    4. Portable: platform-neutral — no machine-specific absolute paths, hostnames, or hard-coded model IDs where a tier belongs.
+    5. Consistent: agrees with playbook/SKILL.md and does not reintroduce anything retired in playbook/lessons.md.
+    Name the criterion lost for any missing point.
+  path_instructions:
+    - path: "playbook/**"
+      instructions: >-
+        This is the fleet's source of truth. Flag any addition that reads as a
+        blanket rule or mandate rather than procedure or recorded decision; flag
+        the word "canonical"/"canon"; flag claims that lack a citation or a
+        verification note; flag contradictions with lessons.md.
+    - path: "agents/**"
+      instructions: >-
+        Role definitions: frontmatter must keep "model: inherit" (models bind at
+        launch per routing tier); bodies stay platform-neutral and lane-scoped.
