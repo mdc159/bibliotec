@@ -2,6 +2,14 @@
 
 History, not procedure. The playbook states only the correct way; this register records where we came from and why conventions changed, so confusion has a lookup path. Newest first.
 
+## 2026-07-23 — Watcher hung waiting `--until idle` on Pi builders that settle as `done`
+
+The verifier watcher's first E2B cycle never fired: `herdr agent wait <builder> --until idle` blocks forever because Pi builders settle in state `done`, which `--until idle` never matches. Bare `herdr agent wait` (no `--until`) matches idle, done, or blocked — the correct settle set. Fixed in `herdr-verifier/watcher.py` (`wait_settled()`, regression-tested against a fake builder that settles as `done`). General rule: when waiting on lifecycle states, wait on the full settle set, not one named state.
+
+## 2026-07-23 — Spawned agents don't inherit the orchestrator's env; secrets reach tools via repo-local .env
+
+The K3 verifier's E2B runner failed with AuthenticationException: the verifier's pane shell predated/didn't inherit `E2B_API_KEY`. The verifier honored the no-host-execution rule and returned `unsure` rather than falling back — correct behavior, and the first live proof the isolation rule holds under pressure. Fix: the runner loads the repo-root `.env` (gitignored, orchestrator-placed, mode 600; env var takes precedence). Don't assume a worker pane's environment matches the shell that exported a key.
+
 ## 2026-07-22 — GPT models launch via Pi's `openai-codex` provider; direct `--kind codex` retired
 
 GPT models route through Pi (`--kind pi --model openai-codex/...`) on Codex OAuth billing. Direct Codex launches were retired because the Codex TUI runs on the terminal alternate screen (output unreadable via pane scrollback), resumed sessions swallowed the first prompt, and it required per-kind exceptions (`--dangerously-bypass-approvals-and-sandbox`, blank `OPENAI_API_KEY` in the pane env to protect OAuth billing). Scope note: this decision covers only the GPT/Codex path — other herdr-integrated kinds remain valid workers, with Pi preferred (not mandated) for scripted automation. A same-day playbook draft overstated this as "all workers are Pi agents"; the user corrected it within hours — an argument for keeping decisions narrow and quoting them, not paraphrasing them.
