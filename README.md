@@ -1,5 +1,7 @@
 # bibliotec
 
+![bibliotec — one catalog feeding the fleet](images/bibliotec_banner.svg)
+
 The fleet's source of truth: one catalog of skills, agents, and prompts that every machine and every agent harness pulls from. House doctrine lives in this repo; working tools live in their own repos and are referenced by URL — the `use` flow pulls either the same way. Nothing is copied until asked for; freshness is built into the act of using (`use` pulls first).
 
 ## Start here
@@ -15,6 +17,8 @@ The fleet's source of truth: one catalog of skills, agents, and prompts that eve
 | [`library.yaml`](library.yaml) | The catalog itself |
 
 ## How it works
+
+![The ring of watchers — builders verified, verifiers certified, the user overrules everything](images/ring_of_watchers.svg)
 
 The library is a pure agent application — no scripts, no CLI: `SKILL.md` plus the [`cookbook/`](cookbook/) recipes teach any harness that reads skill files (Claude Code, Pi, Hermes, …) how to `use`, `sync`, `push`, and manage the catalog. Sources are GitHub URLs or local paths; fetching an asset pulls its whole parent directory so scripts and references travel with it.
 

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-labelledby="title desc">
+  <title id="title">Ring of Watchers trust architecture</title>
+  <desc id="desc">The user overrules a ring in which builders are verified by verifiers, verifiers are certified by a gauntlet with an exam and answer key, and all evidence is recorded to a central notebook.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="45%" r="62%">
+      <stop offset="0" stop-color="#173148"/>
+      <stop offset="1" stop-color="#0c1727"/>
+    </radialGradient>
+    <marker id="cyanArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1l8 4-8 4z" fill="#59d4c7"/>
+    </marker>
+    <marker id="violetArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1l8 4-8 4z" fill="#a78bfa"/>
+    </marker>
+    <marker id="mutedArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 1l8 4-8 4z" fill="#71839f"/>
+    </marker>
+    <filter id="halo" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#59d4c7" flood-opacity="0.13" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="900" height="600" rx="24" fill="url(#bg)"/>
+  <g font-family="sans-serif">
+    <text x="38" y="45" fill="#eef5ff" font-size="25" font-weight="700">Ring of Watchers</text>
+    <text x="38" y="69" fill="#8295b1" font-size="13" letter-spacing="1.3">FLEET TRUST ARCHITECTURE</text>
+
+    <!-- User control plane: revealed last -->
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="3.7s" fill="freeze"/>
+      <g filter="url(#halo)">
+        <rect x="335" y="24" width="230" height="62" rx="31" fill="#132638" stroke="#f2c66d" stroke-width="2">
+          <animate attributeName="stroke-opacity" values="0.65;1;0.65" dur="4.5s" begin="4.5s" repeatCount="indefinite"/>
+        </rect>
+        <circle cx="373" cy="55" r="17" fill="#201f29" stroke="#f2c66d"/>
+        <circle cx="373" cy="49" r="6" fill="#f2c66d"/>
+        <path d="M362 68q11-14 22 0" fill="#f2c66d"/>
+        <text x="405" y="52" fill="#fff4d6" font-size="16" font-weight="700">the user</text>
+        <text x="405" y="70" fill="#c7a95f" font-size="11" letter-spacing="1">FINAL AUTHORITY</text>
+      </g>
+      <path d="M450 87v62" stroke="#f2c66d" stroke-width="2.5" marker-end="url(#cyanArrow)"/>
+      <rect x="379" y="101" width="142" height="25" rx="12.5" fill="#171c27" stroke="#6f603d"/>
+      <text x="450" y="118" text-anchor="middle" fill="#f2c66d" font-size="12" font-weight="700">overrules everything</text>
+    </g>
+
+    <!-- Ring guide -->
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.3s" fill="freeze"/>
+      <ellipse cx="450" cy="355" rx="345" ry="205" fill="none" stroke="#2a3b52" stroke-width="2" stroke-dasharray="4 8"/>
+      <ellipse cx="450" cy="355" rx="315" ry="175" fill="none" stroke="#19283a"/>
+    </g>
+
+    <!-- Ambient pulse travels the ring after the narrative completes -->
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.5s" fill="freeze"/>
+      <ellipse cx="450" cy="355" rx="345" ry="205" fill="none" stroke="#59d4c7" stroke-width="4" stroke-linecap="round" stroke-dasharray="20 1758">
+        <animate attributeName="stroke-dashoffset" from="0" to="-1778" dur="8.5s" begin="4.5s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-opacity" values="0.25;1;0.25" dur="3.8s" begin="4.5s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+
+    <!-- Trust relation arcs -->
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.3s" fill="freeze"/>
+      <path d="M274 247C350 182 551 182 626 247" fill="none" stroke="#59d4c7" stroke-width="3" marker-end="url(#cyanArrow)"/>
+      <rect x="356" y="181" width="188" height="27" rx="13.5" fill="#0b1524" stroke="#315a61"/>
+      <text x="450" y="199" text-anchor="middle" fill="#8ce9df" font-size="12" font-weight="700">builders verified by verifiers</text>
+    </g>
+
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.1s" fill="freeze"/>
+      <path d="M596 444C657 416 691 354 677 305" fill="none" stroke="#a78bfa" stroke-width="3" marker-end="url(#violetArrow)"/>
+      <g transform="translate(651 392) rotate(-66)">
+        <rect x="-67" y="-13" width="134" height="26" rx="13" fill="#0b1524" stroke="#51447e"/>
+        <text x="0" y="5" text-anchor="middle" fill="#cfc1ff" font-size="12" font-weight="700">certifies verifiers</text>
+      </g>
+      <path d="M305 450C235 428 196 372 211 307" fill="none" stroke="#4c6681" stroke-width="2" marker-end="url(#mutedArrow)"/>
+      <g transform="translate(225 397) rotate(62)">
+        <text x="0" y="0" text-anchor="middle" fill="#8195b0" font-size="11" letter-spacing="0.8">review cycle</text>
+      </g>
+    </g>
+
+    <!-- Builder node -->
+    <g transform="translate(112 226)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.4s" fill="freeze"/>
+      <rect width="180" height="102" rx="16" fill="#102438" stroke="#59d4c7" stroke-width="2"/>
+      <rect x="16" y="18" width="48" height="48" rx="10" fill="#0a1727" stroke="#3c746f"/>
+      <path d="M29 42l8 7 15-17M24 59h32" fill="none" stroke="#59d4c7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="78" y="39" fill="#e9ffff" font-size="17" font-weight="700">builders</text>
+      <text x="78" y="59" fill="#83aaa9" font-size="12">make fleet changes</text>
+      <rect x="17" y="78" width="146" height="10" rx="5" fill="#17384a"/>
+      <rect x="17" y="78" width="93" height="10" rx="5" fill="#59d4c7" opacity="0.8"/>
+    </g>
+
+    <!-- Verifier node -->
+    <g transform="translate(608 226)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.1s" fill="freeze"/>
+      <rect width="180" height="102" rx="16" fill="#191d38" stroke="#a78bfa" stroke-width="2"/>
+      <path d="M39 17l23 8v18c0 18-12 28-23 34-11-6-23-16-23-34V25z" fill="#11152a" stroke="#a78bfa"/>
+      <path d="M28 44l8 8 15-18" fill="none" stroke="#cfc1ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="76" y="39" fill="#f2eeff" font-size="17" font-weight="700">verifiers</text>
+      <text x="76" y="59" fill="#a69bc9" font-size="12">check every builder</text>
+      <circle cx="90" cy="83" r="4" fill="#a78bfa"/><circle cx="106" cy="83" r="4" fill="#625488"/><circle cx="122" cy="83" r="4" fill="#625488"/>
+    </g>
+
+    <!-- Gauntlet node -->
+    <g transform="translate(301 445)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.9s" fill="freeze"/>
+      <rect width="298" height="112" rx="18" fill="#221d2e" stroke="#f07b91" stroke-width="2"/>
+      <text x="24" y="29" fill="#ffe9ed" font-size="17" font-weight="700">the gauntlet</text>
+      <text x="274" y="28" text-anchor="end" fill="#b98a96" font-size="11" letter-spacing="1">CERTIFICATION</text>
+      <g transform="translate(22 45)">
+        <rect width="116" height="48" rx="9" fill="#151524" stroke="#f07b91"/>
+        <path d="M15 14h18M15 23h28M15 32h22" stroke="#f07b91" stroke-width="2"/>
+        <text x="56" y="30" fill="#ffd4dc" font-size="13" font-weight="700">exam</text>
+      </g>
+      <text x="149" y="75" text-anchor="middle" fill="#7f7081" font-size="16">+</text>
+      <g transform="translate(160 45)">
+        <rect width="116" height="48" rx="9" fill="#151524" stroke="#f2c66d"/>
+        <path d="M15 14l5 5 8-10M15 31l5 5 8-10" fill="none" stroke="#f2c66d" stroke-width="2"/>
+        <text x="38" y="29" fill="#fff1c9" font-size="12" font-weight="700">answer key</text>
+      </g>
+    </g>
+
+    <!-- Everything records inward; notebook is fourth in trust order -->
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="2.8s" fill="freeze"/>
+      <g fill="none" stroke="#71839f" stroke-width="1.5" stroke-dasharray="3 6" marker-end="url(#mutedArrow)">
+      <path d="M292 292L369 326"/>
+      <path d="M608 292L531 326"/>
+      <path d="M450 445V402"/>
+    </g>
+
+    <!-- Central notebook -->
+    <g transform="translate(355 286)" filter="url(#halo)">
+      <rect width="190" height="122" rx="18" fill="url(#core)" stroke="#6e91aa" stroke-width="2"/>
+      <path d="M48 24h94a9 9 0 0 1 9 9v65H48z" fill="#dcecf1"/>
+      <path d="M48 24c13 3 20 8 25 15v59H48z" fill="#b8d2da"/>
+      <path d="M83 45h48M83 59h48M83 73h35" stroke="#547181" stroke-width="3" stroke-linecap="round"/>
+      <path d="M39 34h17M39 52h17M39 70h17M39 88h17" stroke="#f2c66d" stroke-width="3" stroke-linecap="round"/>
+      <text x="95" y="113" text-anchor="middle" fill="#eaf7fb" font-size="14" font-weight="700">the notebook</text>
+    </g>
+    <rect x="360" y="416" width="180" height="25" rx="12.5" fill="#101c2c" stroke="#334962"/>
+      <text x="450" y="433" text-anchor="middle" fill="#95abc1" font-size="11" letter-spacing="0.7">EVERYTHING IS RECORDED</text>
+    </g>
+  </g>
+</svg>
