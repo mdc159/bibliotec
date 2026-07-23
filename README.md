@@ -11,6 +11,7 @@ The fleet's source of truth: one catalog of skills, agents, and prompts that eve
 | Read | For |
 |---|---|
 | [`playbook/SKILL.md`](playbook/SKILL.md) | How the fleet operates: orchestrator role, worker launch, routing tiers, verification, PR discipline |
+| [`playbook/documentation.md`](playbook/documentation.md) | The documentation contract — the one binding rule: what gets recorded, where, in what form |
 | [`playbook/lessons.md`](playbook/lessons.md) | Retired conventions and the mistakes that retired them |
 | [`gauntlet/SKILL.md`](gauntlet/SKILL.md) | The defined exam a model passes to hold a fleet role |
 | [`cookbook/kickoff.md`](cookbook/kickoff.md) | Starting a new project from any pane |

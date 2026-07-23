@@ -9,6 +9,8 @@ This is the correct way to run the fleet. Procedures enter this document only af
 
 What this repo guarantees is accurate description — layout, procedure, decisions, and their reasons, kept true. The fleet spans Mac, Windows, and Linux; assets are written platform-neutral where possible, and the consuming agent on each machine ports them to its native system and verifies its own port there. Description is verified where written; execution is verified where run.
 
+The one binding rule for anything that adopts this library is the [documentation contract](documentation.md): every record traceable, index-first, landing in the same place every time — documentation is part of Done. Everything else in this playbook is procedure offered to whoever holds the roles.
+
 Authority for any convention question: IndyDevDan's repos (`~/Projects/IDD/repos/`) are the rules — we are cloning his practice, and what his code does is what we do. The user, and only the user, may overrule Dan; an overrule is recorded at the scope stated. Where his repos are silent, verified local experience fills the gap, then orchestrator extrapolation — always labeled as such, and never overriding either authority above it. Substrate substitutions (herdr for cmux/tmux, our model subscriptions for his defaults) follow his pattern on our tools and are recorded deliberately.
 
 ## Roles and model routing
@@ -93,9 +95,10 @@ Confirm the lifecycle returns to `working`. For interactive UI controls use `her
 
 Bringing a new model into use? **Ask the user whether it runs the gauntlet, and talk it through.** The gauntlet is a defined test — the `gauntlet` skill (`gauntlet/SKILL.md` in this repo) — run exactly as written; results are recorded here. Re-check roughly monthly or when a model version changes.
 
-- Checked out (2026-07-23): **GLM-5.2** as builder (refused seeded-flaw delivery three ways, disclosed honestly); **Kimi K3** as verifier (7/7 correct live verdicts, including a 3-round FEEDBACK catch and behavioral verification); **GPT-5.6** (`openai-codex/gpt-5.6-sol`) as verifier (matched K3's diagnosis on the identical specimen plus edge cases K3 missed; live GLM cycle VERIFIED with independent behavioral testing — 15 tool calls of its own probes). Checked-out pairs: GLM-5.2⟷K3, GLM-5.2⟷GPT-5.6. Both verifiers completed the defined exam 2026-07-23, including the t1 contradiction replay: K3 failed/FEEDBACK with both unit contradictions computed; GPT-5.6 unsure with both units plus the GB flaw's first discovery. Volume verification routes through the volume-verifier tier (currently resolving to GPT-5.6 on this node's OAuth quota); the hardest-verification tier stays K3 (1M context). Evidence: runs entry 2026-07-23T06:24:52Z (`verifier: ver-gpt56-codex`), candidate session 2026-07-23T06-17-35Z_019f8d9f-4e0e in the Pi sessions store, `herdr-verifier/calibration/scorecard.md` for the K3 baseline.
-- Not checked out: **Qwen3.5-9B** (malformed tool calls, incomplete delivery, repeated red suites).
-- Work from a checked-out builder, verified by a checked-out verifier, ships on `VERIFIED` alone — the orchestrator sees only escalations. Escalation machinery proven live 2026-07-23 (evidence: `herdr-verifier/runs/`, `calibration/scorecard.md`).
+- Checked out (2026-07-23): **GLM-5.2** as builder; **Kimi K3** and **GPT-5.6** (`openai-codex/gpt-5.6-sol`) as verifiers. Checked-out pairs: GLM-5.2⟷K3, GLM-5.2⟷GPT-5.6. Volume verification routes through the volume-verifier tier (currently GPT-5.6 on this node's OAuth quota); the hardest-verification tier stays K3 (1M context).
+- Not checked out: **Qwen3.5-9B**.
+- Work from a checked-out builder, verified by a checked-out verifier, ships on `VERIFIED` alone — the orchestrator sees only escalations.
+- This section carries current status only. Full exam records with evidence citations live in the vault per the [documentation contract](documentation.md) (`certifications/` — one record per exam run).
 
 ## Verification loop
 
