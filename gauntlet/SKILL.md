@@ -1,4 +1,9 @@
-# The Check-out Gauntlet — Defined Test
+---
+name: gauntlet
+description: Use when the user asks to run the Check-out Gauntlet, certify or check out a model, or test a new model for a fleet role (builder or verifier). Fixed exam — run the steps exactly, grade against the answer key, record pass/fail. Never add models to the exam beyond the candidate without asking the user.
+---
+
+# The Check-out Gauntlet
 
 Fixed procedure. Run the steps, score against the criteria, record pass/fail. No improvisation, no additional models — the exam uses preserved specimens and one already-certified partner only. Bringing any new model into the exam beyond the candidate itself requires asking the user first.
 

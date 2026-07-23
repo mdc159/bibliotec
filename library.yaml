@@ -23,6 +23,10 @@ library:
       description: The Library itself — private-first distribution of skills, agents, and prompts
       source: https://github.com/mdc159/bibliotec/blob/main/SKILL.md
 
+    - name: gauntlet
+      description: The Check-out Gauntlet as a defined exam — fixed steps, preserved specimens, answer key, pass/fail; certifies models for fleet roles
+      source: https://github.com/mdc159/bibliotec/blob/main/gauntlet/SKILL.md
+
     - name: orchestration-playbook
       description: Fleet orchestration procedures (worker launch, recipes, routing tiers, verification loop) with lessons register
       source: https://github.com/mdc159/bibliotec/blob/main/playbook/SKILL.md
