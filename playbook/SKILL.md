@@ -126,7 +126,7 @@ Optional isolation, engaged when the orchestrator or user chooses it — for exa
 
 ## Pull requests
 
-Changes to locked mains land by PR. Self-merging your own PR is allowed **after** two reviews are in: CodeRabbit's automated review, and one independent opinion — another checked-out model reviewing the diff, or the user. (Until the CodeRabbit app is installed and wired as a required status check, treat its half as pending and lean on the independent opinion.)
+Changes to locked mains land by PR. Self-merging your own PR is allowed **after** two reviews are in: CodeRabbit's automated review, and one independent opinion — another checked-out model reviewing the diff, or the user. (CodeRabbit is installed account-wide; the free tier rate-limits reviews, so a PR may need `@coderabbitai review` re-triggered or a short wait during high-volume stretches.)
 
 ## Fleet hygiene
 
