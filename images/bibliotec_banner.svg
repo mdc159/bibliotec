@@ -32,8 +32,11 @@
   <circle cx="1168" cy="48" r="3" fill="#394964"/>
 
   <!-- Original library / boot-disk mark -->
-  <g transform="translate(66 46)" filter="url(#softGlow)">
-    <path d="M18 0h156l34 34v168a12 12 0 0 1-12 12H18A18 18 0 0 1 0 196V18A18 18 0 0 1 18 0z" fill="url(#disk)" stroke="#57d3c5" stroke-width="2"/>
+  <g transform="translate(66 46)" filter="url(#softGlow)" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="0.2s" fill="freeze"/>
+    <path d="M18 0h156l34 34v168a12 12 0 0 1-12 12H18A18 18 0 0 1 0 196V18A18 18 0 0 1 18 0z" fill="url(#disk)" stroke="#57d3c5" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.65;1;0.65" dur="4s" begin="4.3s" repeatCount="indefinite"/>
+    </path>
     <path d="M42 0v58h116V0M65 0v38h70V0" fill="#0a1424" stroke="#33445f" stroke-width="2"/>
     <rect x="29" y="78" width="150" height="96" rx="8" fill="#0a1322" stroke="#33445f"/>
     <path d="M48 91v68M73 99v60M98 87v72M123 102v57M148 94v65" stroke-width="15" stroke-linecap="round"/>
@@ -48,7 +51,8 @@
   </g>
 
   <!-- Name and purpose -->
-  <g font-family="sans-serif">
+  <g font-family="sans-serif" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.7s" fill="freeze"/>
     <text x="318" y="124" fill="#eef5ff" font-size="58" font-weight="700" letter-spacing="1">bibliotec</text>
     <text x="321" y="158" fill="#91a3bd" font-size="17" letter-spacing="1.6">THE FLEET'S SOURCE-OF-TRUTH CATALOG</text>
     <rect x="321" y="181" width="318" height="31" rx="15.5" fill="#14263a" stroke="#28465b"/>
@@ -57,27 +61,38 @@
   </g>
 
   <!-- Catalog distribution bus -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M640 196H735V105H808" stroke="#57d3c5" stroke-width="2"/>
-    <path d="M735 196H808" stroke="url(#signal)" stroke-width="2"/>
-    <path d="M735 196v80H808" stroke="#80a7ff" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.2s" fill="freeze"/>
+    <path d="M640 196H735V105H808" stroke="#57d3c5" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.45;1;0.45" dur="3.8s" begin="4.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M735 196H808" stroke="url(#signal)" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3.8s" begin="4.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M735 196v80H808" stroke="#80a7ff" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.45;1;0.45" dur="3.8s" begin="5.3s" repeatCount="indefinite"/>
+    </path>
     <circle cx="735" cy="196" r="7" fill="#08111f" stroke="#57d3c5" stroke-width="2"/>
     <path d="M794 105h14M794 196h14M794 276h14" stroke="#80a7ff" stroke-width="2" marker-end="url(#arrow)"/>
   </g>
-  <g fill="#57d3c5">
+  <g fill="#57d3c5" opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.3s" fill="freeze"/>
+    <animate attributeName="fill-opacity" values="0.4;1;0.4" dur="3.5s" begin="4.3s" repeatCount="indefinite"/>
     <circle cx="680" cy="196" r="3"/><circle cx="735" cy="147" r="3"/><circle cx="770" cy="105" r="3"/>
   </g>
 
   <!-- Fleet endpoints: machine, agent, terminal -->
   <g font-family="sans-serif">
-    <g transform="translate(820 76)">
+    <g transform="translate(820 76)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.7s" fill="freeze"/>
       <rect width="138" height="58" rx="10" fill="#111f33" stroke="#386675"/>
       <rect x="13" y="13" width="50" height="31" rx="4" fill="#08111f" stroke="#57d3c5"/>
       <path d="M21 23l7 6-7 6M33 35h18" fill="none" stroke="#57d3c5" stroke-width="2"/>
       <text x="76" y="27" fill="#eef5ff" font-size="13" font-weight="700">machine</text>
       <text x="76" y="43" fill="#8296b2" font-size="11">booted</text>
     </g>
-    <g transform="translate(820 167)">
+    <g transform="translate(820 167)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.3s" fill="freeze"/>
       <rect width="160" height="58" rx="10" fill="#111f33" stroke="#596fa0"/>
       <circle cx="38" cy="29" r="18" fill="#101a2b" stroke="#80a7ff"/>
       <circle cx="32" cy="27" r="2.5" fill="#80a7ff"/><circle cx="44" cy="27" r="2.5" fill="#80a7ff"/>
@@ -85,12 +100,14 @@
       <text x="70" y="27" fill="#eef5ff" font-size="13" font-weight="700">agent</text>
       <text x="70" y="43" fill="#8296b2" font-size="11">provisioned</text>
     </g>
-    <g transform="translate(820 247)">
+    <g transform="translate(820 247)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.9s" fill="freeze"/>
       <rect width="184" height="42" rx="10" fill="#111f33" stroke="#596fa0"/>
       <circle cx="20" cy="21" r="5" fill="#57d3c5"/>
       <text x="35" y="26" fill="#eef5ff" font-size="13" font-weight="700">fleet node · synced</text>
     </g>
-    <g transform="translate(1018 82)" opacity="0.8">
+    <g transform="translate(1018 82)" opacity="0">
+      <animate attributeName="opacity" from="0" to="0.8" dur="0.5s" begin="3.5s" fill="freeze"/>
       <rect width="118" height="138" rx="14" fill="#0d1829" stroke="#33445f"/>
       <text x="59" y="25" text-anchor="middle" fill="#91a3bd" font-size="11" letter-spacing="1.2">MORE NODES</text>
       <g fill="#15253a" stroke="#4a607d">
