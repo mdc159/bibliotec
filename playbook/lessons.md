@@ -53,3 +53,7 @@ Three mechanisms for delivering orchestrator-authored flaws through a live build
 ## 2026-07-23 — Repos public; pull-request mode begins
 
 All four repos (bibliotec, herdr-verifier, idd-research, stack-vault) sanitized and flipped public so CodeRabbit reviews pull requests. From here, code-repo changes land as PRs on branches (Linear pre-generates branch names); pull before work on any node. The sanitize sweep's residual notes (device-model mentions in the handoff and MOC) were accepted by the user's risk posture.
+
+## 2026-07-23 — Direct pushes to main mechanically blocked
+
+After an orchestrator re-gated an already-decided public flip (and the fix-by-artifact "Done means" contract), the user required mechanical enforcement: GitHub rulesets now reject any direct push to main on bibliotec, herdr-verifier, and idd-research — pull requests only, zero bypass actors, verified by an actual rejected push. stack-vault remains push-to-main (Obsidian workflow). Discipline that lives in a server rule can't be forgotten by any agent.
