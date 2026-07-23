@@ -112,6 +112,9 @@ The watcher records evidence to `runs/YYYY-MM-DD.jsonl`; verdicts are `VERIFIED`
 
 ## Fleet hygiene
 
+Workers start fresh and end released: spawn a new agent per mission, release its pane when the work is delivered (artifacts and repos hold the results; pane context is disposable runtime state). This is the upstream pattern — cmux teams boot "a fresh 5-agent team as a new workspace" and their roster files are "regenerated on every spawn" (`learning-cmux-with-agents`: `.claude/commands/spawn-fs-team.md`, `.team/README.md`). Persistent staff (a verifier, a scribe) is the deliberate exception, restarted fresh at mission boundaries.
+
+
 - Parse IDs from JSON responses.
 - Close only panes, tabs, and workspaces you created.
 - After `herdr update`, run `herdr integration status --outdated-only` and reinstall anything flagged.
