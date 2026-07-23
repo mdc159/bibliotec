@@ -23,6 +23,10 @@ library:
       description: The Library itself — private-first distribution of skills, agents, and prompts
       source: /home/hammer/.claude/skills/library/SKILL.md
 
+    - name: orchestration-playbook
+      description: Canonical fleet orchestration procedures (Pi-hosted workers, canonical launch, recipes, verification loop) with lessons register
+      source: /home/hammer/.claude/skills/library/playbook/SKILL.md
+
   agents:
     - name: verifier
       description: Read-only verifier persona (no write/edit) that independently re-checks builder turns — IndyDevDan verifier pattern
