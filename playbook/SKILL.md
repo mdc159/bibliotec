@@ -20,7 +20,7 @@ The orchestrator is a role, not a particular agent — any capable agent (Claude
 | Briefs, planning, final review | The orchestrator role (strongest available model; currently Claude Fable, Hermes-capable) |
 | Default substantial implementation | Pi → `openai-codex/...` (GPT models on Codex OAuth billing) |
 | Hardest tasks and verification | Pi → `kimi-coding/k3` (1M context) |
-| Bulk work and cheap iteration | Pi → `zai/glm-5.2` (flat-rate coding plan) |
+| Bulk work and cheap iteration | Pi → `zai/glm-5.2` (per-node subscription) |
 | Offline / private | Pi → local models via Ollama |
 | Exotic / new models | Pi → `openrouter/...` |
 
