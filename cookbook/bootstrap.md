@@ -32,4 +32,4 @@ Using the library skill (`/library use <name>`), or manually per `cookbook/use.m
 
 ## 5. Smoke test
 
-Inside a herdr-managed pane (`HERDR_ENV=1`), run the playbook's canonical worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.
+Inside a herdr-managed pane (`HERDR_ENV=1`), run the playbook's worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.

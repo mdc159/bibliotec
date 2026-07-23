@@ -1,6 +1,6 @@
 ---
 name: orchestration-playbook
-description: Canonical procedures for orchestrating the herdr + Pi worker fleet — launching, driving, and verifying agent workers. Load when acting as fleet orchestrator.
+description: Procedures for orchestrating the herdr + Pi worker fleet — launching, driving, and verifying agent workers. Load when acting as fleet orchestrator.
 ---
 
 # Orchestration Playbook
@@ -26,7 +26,7 @@ The orchestrator is a role, not a particular agent — any capable agent (Claude
 
 Definitions reference tiers (columns 1) so they stay portable across devices; each device resolves a tier to whatever subscription it holds.
 
-## Canonical worker launch
+## Worker launch
 
 Use this sequence for every worker.
 
@@ -63,13 +63,13 @@ Read results from the artifact file or the agent's session JSONL — these are t
 
 ## Recipes
 
-**Worker beside the orchestrator.** Run the canonical launch in the current tab; keep your own focus. Read the artifact after the worker settles to `idle`/`done`.
+**Worker beside the orchestrator.** Run the worker launch in the current tab; keep your own focus. Read the artifact after the worker settles to `idle`/`done`.
 
 **Model panel.** Fan one brief to two or three workers on different tiers, each with its own artifact path; compare the artifact files and synthesize.
 
-**Isolated parallel work.** `herdr worktree create --branch <name>`, then the canonical launch inside the new workspace — one fresh agent per worktree. Review diff and artifact, then `herdr worktree remove --workspace <id>` for workspaces you created.
+**Isolated parallel work.** `herdr worktree create --branch <name>`, then the worker launch inside the new workspace — one fresh agent per worktree. Review diff and artifact, then `herdr worktree remove --workspace <id>` for workspaces you created.
 
-**Long-running shell job.** Canonical split and shell wait, then:
+**Long-running shell job.** Split and shell-wait as above, then:
 
 ```bash
 herdr pane run <pane-id> "mkdir -p .artifacts; <cmd> > .artifacts/<job>.log 2>&1; echo HERDR-JOB-DONE"
@@ -91,13 +91,11 @@ Confirm the lifecycle returns to `working`. For interactive UI controls use `her
 
 ## The Check-out Gauntlet
 
-A model earns a fleet role by passing the gauntlet — live calibration cycles through the verifier loop (see `~/Projects/herdr-verifier/calibration/`); certification is per role, recorded here, and re-run monthly or on model-version change.
+Bringing a new model into use? **Ask the user whether it runs the gauntlet, and talk it through.** The gauntlet itself = live calibration cycles through the verifier loop (`~/Projects/herdr-verifier/calibration/`); results are recorded here. Re-check roughly monthly or when a model version changes.
 
-- **Builder certification**: delivers a multi-constraint task completely; reports test results truthfully; refuses to ship known-false claims. Checked out: **GLM-5.2** (2026-07-23 — refused seeded-flaw delivery three ways, disclosed honestly). Not checked out: **Qwen3.5-9B** (malformed tool calls, incomplete delivery, repeated red suites).
-- **Verifier certification**: verdicts correct on honest turns, defective deliveries, and contradictory briefs; verifies behaviorally (executes code/tests) when claims are computational. Checked out: **Kimi K3** (2026-07-23 — 7/7 correct live verdicts: 4 sound VERIFIED plus a 3-round FEEDBACK catch with accurate diagnoses).
-- **Routing rule**: work from a checked-out builder, verified by a checked-out verifier, ships on `VERIFIED` alone; the orchestrator sees only escalations. Uncertified builders run only inside a continuous watcher loop with a feedback cap; their work never ships unverified. Uncertified verifiers judge nothing that ships.
-- **Escalation is proven machinery**: cap-triggered human notification demonstrated live 2026-07-23 (3 consecutive FEEDBACKs → escalated, dispatch halted). Evidence: `herdr-verifier/runs/`, `herdr-verifier/calibration/scorecard.md`.
-- Certification scope matches evidenced task classes (currently: small Python/tooling tasks with verifiable claims); the gauntlet widens scope as new task classes are passed.
+- Checked out (2026-07-23): **GLM-5.2** as builder (refused seeded-flaw delivery three ways, disclosed honestly); **Kimi K3** as verifier (7/7 correct live verdicts, including a 3-round FEEDBACK catch and behavioral verification).
+- Not checked out: **Qwen3.5-9B** (malformed tool calls, incomplete delivery, repeated red suites).
+- Work from a checked-out builder, verified by a checked-out verifier, ships on `VERIFIED` alone — the orchestrator sees only escalations. Escalation machinery proven live 2026-07-23 (evidence: `herdr-verifier/runs/`, `calibration/scorecard.md`).
 
 ## Verification loop
 
