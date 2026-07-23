@@ -1,0 +1,31 @@
+name: Claude Review (on demand)
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    if: contains(github.event.comment.body, '@claude-review') && github.event.comment.user.login == 'mdc159'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@v1
+        timeout-minutes: 15
+        with:
+          github_token: ${{ github.token }}
+          trigger_phrase: "@claude-review"
+          prompt: >-
+            Review this pull request as an independent opinion (the merge practice's
+            second reviewer). Natural review — no house rubric; that seat is taken.
+            Evidence-first: cite file and line for every finding, verify claims
+            against the actual diff and repo state, fewer higher-signal comments.
