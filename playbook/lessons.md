@@ -57,3 +57,7 @@ All four repos (bibliotec, herdr-verifier, idd-research, stack-vault) sanitized 
 ## 2026-07-23 — Direct pushes to main mechanically blocked
 
 After an orchestrator re-gated an already-decided public flip (and the fix-by-artifact "Done means" contract), the user required mechanical enforcement: GitHub rulesets now reject any direct push to main on bibliotec, herdr-verifier, and idd-research — pull requests only, zero bypass actors, verified by an actual rejected push. stack-vault remains push-to-main (Obsidian workflow). Discipline that lives in a server rule can't be forgotten by any agent.
+
+## 2026-07-23 — GPT-5.6 checked out as verifier; exam inflated by an unauthorized third model
+
+GPT-5.6 (openai-codex/gpt-5.6-sol) passed the verifier gauntlet against GLM-5.2: replay on K3's graded specimen (matched diagnosis + extra edge cases) and a live watcher cycle (VERIFIED with independent behavioral testing). The exam went sideways when the orchestrator added a weak third model (nemotron via openrouter free tier) as a failure prop WITHOUT asking the user — violating the ask-first new-model rule written the same day — and the prop's OpenRouter auth was broken anyway, producing infra noise instead of signal. The two-model exam had already been sufficient. Twin lesson: the ask-first rule covers props too, and a finished test doesn't need another act.
