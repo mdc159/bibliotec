@@ -1,4 +1,15 @@
-# The Library
+# The Library — bibliotec
+
+This fork is the fleet's source of truth. **New agent or new machine? Start at [`cookbook/bootstrap.md`](cookbook/bootstrap.md)** — prerequisites, clone, providers, smoke test. Then:
+
+- [`playbook/SKILL.md`](playbook/SKILL.md) — how the fleet operates (orchestrator role, worker launch, routing tiers, PR discipline)
+- [`gauntlet/SKILL.md`](gauntlet/SKILL.md) — the defined exam a model passes to join the fleet
+- [`cookbook/kickoff.md`](cookbook/kickoff.md) — starting a new project from any pane
+- [`library.yaml`](library.yaml) — the catalog: house assets in this repo, external tools (herdr, herdr-verifier, planf3) referenced by URL; `use` pulls either the same way
+
+Everything below is the upstream meta-skill this fork is built on.
+
+---
 
 A meta-skill for private-first distribution of agentics (skills, agents, and prompts) across agents, devices, and teams.
 
