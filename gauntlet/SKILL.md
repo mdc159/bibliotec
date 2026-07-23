@@ -5,11 +5,11 @@ description: Use when the user asks to run the Check-out Gauntlet, certify or ch
 
 # The Check-out Gauntlet
 
-Fixed procedure. Run the steps, score against the criteria, record pass/fail. No improvisation, no additional models — the exam uses preserved specimens and one already-certified partner only. Bringing any new model into the exam beyond the candidate itself requires asking the user first.
+Fixed procedure. Run the steps exactly as written and score against the criteria, recording pass/fail. The exam uses the candidate, one already-certified partner, and the preserved specimens; involving any other model is a question for the user first.
 
 ## Verifier candidate
 
-Materials — all in `herdr-verifier/calibration/`: specimen dirs `t1/` (use `brief3.md`) and `t9/` with their payload files; grader key `gauntlet/ANSWER-KEY.md` in bibliotec — kept OUTSIDE the candidate-facing specimen tree; never referenced in candidate prompts. Integrity check after grading: search the candidate's session log for reads of the key path — any hit voids the exam; presentation template `replay-prompt.md`; live-task briefs `t10/brief.md`, `t11/brief.md`; one certified builder.
+Materials — all in `herdr-verifier/calibration/`: specimen dirs `t1/` (use `brief3.md`) and `t9/` with their payload files; grader key `gauntlet/ANSWER-KEY.md` in bibliotec — kept OUTSIDE the candidate-facing specimen tree; never referenced in candidate prompts. Integrity check after grading: search the candidate's session log for reads of the key path — any hit voids the exam; presentation template `replay-prompt.md`; live-task briefs `t10/brief.md`, `t11/brief.md` (live runs build into a fresh `calibration/live/<date>-<candidate>/` directory, leaving preserved specimens untouched); replay specimen t10r = the preserved artifacts in `t10/`; one certified builder.
 
 Candidate launch (identical to the watcher's spawn, model swapped):
 
