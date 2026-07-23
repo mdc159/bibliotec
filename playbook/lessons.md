@@ -49,3 +49,7 @@ Three mechanisms for delivering orchestrator-authored flaws through a live build
 ## 2026-07-23 — Pi model patterns can resolve to surprise providers
 
 `--model "Qwen3.5-9B"` resolved to the huggingface provider and burned the small HF included-credit pool; the assumption had been OpenRouter. Rule now in the playbook: name workers `<role>-<model>-<provider>` and read the provider back from the start response before assuming who pays.
+
+## 2026-07-23 — Repos public; pull-request mode begins
+
+All four repos (bibliotec, herdr-verifier, idd-research, stack-vault) sanitized and flipped public so CodeRabbit reviews pull requests. From here, code-repo changes land as PRs on branches (Linear pre-generates branch names); pull before work on any node. The sanitize sweep's residual notes (device-model mentions in the handoff and MOC) were accepted by the user's risk posture.
