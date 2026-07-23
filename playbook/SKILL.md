@@ -124,6 +124,10 @@ Optional isolation, engaged when the orchestrator or user chooses it — for exa
 
 - Reference implementation: `~/Projects/IDD/repos/agent-sandboxes` (re-fetch from disler upstream on a new node).
 
+## Pull requests
+
+Changes to locked mains land by PR. Self-merging your own PR is allowed **after** two reviews are in: CodeRabbit's automated review, and one independent opinion — another checked-out model reviewing the diff, or the user. (Until the CodeRabbit app is installed and wired as a required status check, treat its half as pending and lean on the independent opinion.)
+
 ## Fleet hygiene
 
 Workers start fresh and end released: spawn a new agent per mission, release its pane when the work is delivered (artifacts and repos hold the results; pane context is disposable runtime state). This is the upstream pattern — cmux teams boot "a fresh 5-agent team as a new workspace" and their roster files are "regenerated on every spawn" (`learning-cmux-with-agents`: `.claude/commands/spawn-fs-team.md`, `.team/README.md`). Persistent staff (a verifier, a scribe) is the deliberate exception, restarted fresh at mission boundaries.
