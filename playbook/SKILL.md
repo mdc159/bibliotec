@@ -7,6 +7,8 @@ description: Canonical procedures for orchestrating the herdr + Pi worker fleet 
 
 This is the correct way to run the fleet. Procedures enter this document only after being verified against the installed tools (currently herdr 0.7.5, Pi 0.81.1). When reality and this document disagree, verify against the tool, then overwrite this document. Retired conventions and the mistakes that retired them live in [lessons.md](lessons.md) — consult it when something here seems to contradict older material.
 
+What this repo guarantees is accurate description — layout, procedure, decisions, and their reasons, kept true. The fleet spans Mac, Windows, and Linux; assets are written platform-neutral where possible, and the consuming agent on each machine ports them to its native system and verifies its own port there. Description is verified where written; execution is verified where run.
+
 Authority for any convention question: IndyDevDan's repos (`~/Projects/IDD/repos/`) are the rules — we are cloning his practice, and what his code does is what we do. The user, and only the user, may overrule Dan; an overrule is recorded at the scope stated. Where his repos are silent, verified local experience fills the gap, then orchestrator extrapolation — always labeled as such, and never overriding either authority above it. Substrate substitutions (herdr for cmux/tmux, our model subscriptions for his defaults) follow his pattern on our tools and are recorded deliberately.
 
 ## Roles and model routing
