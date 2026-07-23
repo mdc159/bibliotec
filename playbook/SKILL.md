@@ -11,11 +11,11 @@ Authority for any convention question: IndyDevDan's repos (`~/Projects/IDD/repos
 
 ## Roles and model routing
 
-The orchestrator (Claude Fable) writes briefs, plans, reviews results, and maintains this playbook. Workers do everything else. Any herdr-integrated agent kind is a valid worker. GPT models run through Pi's `openai-codex` provider (Codex OAuth billing) rather than the Codex CLI. For scripted automation, prefer Pi-hosted workers where equivalent — Pi's herdr integration carries lifecycle authority, instant prompt delivery, and observability.
+The orchestrator is a role, not a particular agent — any capable agent (Claude, Hermes, or another) holds it by loading this playbook. The orchestrator writes briefs, plans, reviews results, and maintains this playbook. Workers do everything else. Everything operational lives in bibliotec: if a procedure exists only in some agent's private memory, it is in the wrong place — move it here. Any herdr-integrated agent kind is a valid worker. GPT models run through Pi's `openai-codex` provider (Codex OAuth billing) rather than the Codex CLI. For scripted automation, prefer Pi-hosted workers where equivalent — Pi's herdr integration carries lifecycle authority, instant prompt delivery, and observability.
 
 | Need | Route (current resolution) |
 |---|---|
-| Briefs, planning, final review | Orchestrator (Claude Fable) |
+| Briefs, planning, final review | The orchestrator role (strongest available model; currently Claude Fable, Hermes-capable) |
 | Default substantial implementation | Pi → `openai-codex/...` (GPT models on Codex OAuth billing) |
 | Hardest tasks and verification | Pi → `kimi-coding/k3` (1M context) |
 | Bulk work and cheap iteration | Pi → `zai/glm-5.2` (flat-rate coding plan) |
