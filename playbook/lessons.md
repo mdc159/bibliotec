@@ -57,3 +57,7 @@ All four repos (bibliotec, herdr-verifier, idd-research, stack-vault) sanitized 
 ## 2026-07-23 — Direct pushes to main mechanically blocked
 
 After an orchestrator re-gated an already-decided public flip (and the fix-by-artifact "Done means" contract), the user required mechanical enforcement: GitHub rulesets now reject any direct push to main on bibliotec, herdr-verifier, and idd-research — pull requests only, zero bypass actors, verified by an actual rejected push. stack-vault remains push-to-main (Obsidian workflow). Discipline that lives in a server rule can't be forgotten by any agent.
+
+## 2026-07-23 — First-prompt swallow affects claude-kind too
+
+A freshly started claude-kind agent's first `herdr agent prompt` landed in the composer as pasted text without submitting (agent stayed idle, title unchanged). Previously documented only for resumed Codex sessions. Detection: status still `idle` after the prompt, pane shows "[Pasted text #1]". Fix: `herdr agent send-keys <name> enter`, then confirm `working`. The playbook's confirm-working step catches this on any kind.
