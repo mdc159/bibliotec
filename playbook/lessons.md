@@ -64,3 +64,7 @@ GPT-5.6 (openai-codex/gpt-5.6-sol) passed the verifier gauntlet against GLM-5.2:
 ## 2026-07-23 — First-prompt swallow affects claude-kind too
 
 A freshly started claude-kind agent's first `herdr agent prompt` landed in the composer as pasted text without submitting (agent stayed idle, title unchanged). Previously documented only for resumed Codex sessions. Detection: status still `idle` after the prompt, pane shows "[Pasted text #1]". Fix: `herdr agent send-keys <name> enter`, then confirm `working`. The playbook's confirm-working step catches this on any kind.
+
+## 2026-07-23 — Local `codex review` replaces dashboard summons; first self-review scored 0/5
+
+Manual Codex review summons from GitHub comments require a per-repo Codex Cloud environment (dashboard-only; no API or CLI creation — openai/codex#24777). Routed around it: `codex review "<rubric instructions>"` runs locally on the node's Codex OAuth, reads AGENTS.md, needs nothing enabled. Its first run reviewed the merged review-era changes and scored them 0/5 with four confirmed findings — including a real exam-integrity contradiction (t10 doubling as honest live task and flawed replay specimen). The instrument criticizing its own construction is the system working; fixes landed same day.
