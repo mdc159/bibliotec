@@ -30,6 +30,8 @@ Definitions reference tiers (columns 1) so they stay portable across devices; ea
 
 Use this sequence for every worker.
 
+Name workers `<role>-<model>-<provider>` so a glance at the sidebar answers what it does, what it runs, and who bills the inference: `bld-glm52-zai`, `wrk-k3-kimi`, `scr-gpt56-codex`, `bld-qwen9b-hf`. Role prefixes: `bld` build, `wrk` bulk/research, `scr` docs, `ver` verify, `cal` gauntlet candidate. When Pi resolves a model by pattern, read the provider back from the start response or session before assuming who pays.
+
 1. **Split without stealing focus** — capture the pane ID from the JSON response (`.result.pane.pane_id`):
 
    ```bash
