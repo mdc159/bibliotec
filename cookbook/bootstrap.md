@@ -14,22 +14,74 @@ Confirm each is on `PATH`, installing with the platform's package manager where 
 ## 2. Install bibliotec
 
 ```bash
-git clone https://github.com/mdc159/bibliotec ~/.claude/skills/library
+set -euo pipefail
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
+git clone https://github.com/mdc159/bibliotec "$CATALOG_CHECKOUT"
+test -f "$CATALOG_CHECKOUT/SKILL.md"
+test -f "$CATALOG_CHECKOUT/library.yaml"
 ```
 
-(Windows: the equivalent user-profile skills path; adapt and verify.) Confirm `SKILL.md` and `library.yaml` exist and `LIBRARY_REPO_URL` in `SKILL.md` reads `https://github.com/mdc159/bibliotec`.
+## 3. Install the-fleet operational checkout
 
-## 3. Configure model providers
+```bash
+set -euo pipefail
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
+test -d "$FLEET_CHECKOUT/.git"
+```
 
-Pi resolves the routing tiers in the `orchestration-playbook` catalog entry to whatever subscriptions this machine holds. Configure the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
+## 4. Hermes automated integration
 
-## 4. Pull the playbook and roles
+Use the helper from the full the-fleet checkout so it can manage and verify both sibling checkouts in place.
 
-Using the library skill (`/library use <name>`), or manually per `cookbook/use.md`:
+```bash
+set -euo pipefail
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
+python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --skills-root "$SKILLS_ROOT" \
+  --catalog-checkout "$CATALOG_CHECKOUT" \
+  --checkout "$FLEET_CHECKOUT" \
+  --json
+```
 
-- `orchestration-playbook` — the fleet procedure; whoever orchestrates loads this
-- `scribe`, `builder`, `workhorse`, `verifier-herdr` — role definitions, as needed
+The helper points the active Hermes profile at the shared skills root, installs one managed fleet-bootstrap block, validates both sibling checkouts, and keeps the layout split between the catalog and the operational repo. It reads no credential files.
 
-## 5. Smoke test
+## 5. Configure model providers
 
-Inside a herdr-managed pane (`HERDR_ENV=1`), run the playbook's worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.
+Pi resolves the routing tiers in the `orchestration-playbook` catalog entry to whatever subscriptions this machine holds. Configure and log in to the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
+
+## 6. Optional smoke test
+
+After provider setup, and only from a Herdr-managed pane (`HERDR_ENV=1`), run the playbook's worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.
+
+```bash
+set -euo pipefail
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
+HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
+SMOKE_MODEL="<playbook cheap/iteration-tier provider/model>"
+python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --skills-root "$SKILLS_ROOT" \
+  --catalog-checkout "$CATALOG_CHECKOUT" \
+  --checkout "$FLEET_CHECKOUT" \
+  --hermes-home "$HERMES_HOME" \
+  --smoke-test \
+  --smoke-model "$SMOKE_MODEL" \
+  --json
+```

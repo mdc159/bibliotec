@@ -20,7 +20,7 @@ The fleet's catalog: one index of skills, agents, and prompts that every machine
 
 ![The ring of watchers — builders verified, verifiers certified, the user overrules everything](images/ring_of_watchers.svg)
 
-The library is a pure agent application — no scripts, no CLI: `SKILL.md` plus the [`cookbook/`](cookbook/) recipes teach any harness that reads skill files (Claude Code, Pi, Hermes, …) how to `use`, `sync`, `push`, and manage the catalog. Sources are GitHub URLs or local paths; fetching an asset pulls its whole parent directory so scripts and references travel with it.
+The library catalog remains an agent application: `SKILL.md` plus the [`cookbook/`](cookbook/) recipes teach any harness that reads skill files (Claude Code, Pi, Hermes, …) how to `use`, `sync`, `push`, and manage the catalog. Harness adapters may carry a small verified helper beside the skill in the repository it serves when the native configuration surface needs deterministic, idempotent edits; [`hermes-onboarding`](https://github.com/mdc159/the-fleet/blob/main/hermes-onboarding/SKILL.md) is the current example. Sources are GitHub URLs or local paths; fetching an asset pulls its whole parent directory so scripts and references travel with it.
 
 Principles this repo runs on: accurate description is the guarantee (docs verified where written, execution verified where run); positive procedure only, history in the lessons register; changes land by pull request on the locked main.
 

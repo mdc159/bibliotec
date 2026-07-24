@@ -19,6 +19,11 @@ library:
       description: Control Herdr terminal multiplexer for coding agents (panes, tabs, workspaces, agent lifecycle)
       source: https://github.com/ogulcancelik/herdr/blob/master/SKILL.md
 
+    - name: hermes-onboarding
+      description: Idempotent Hermes profile integration for the-fleet — external skill discovery, fleet bootstrap, validation, and optional Herdr/Pi smoke test
+      source: https://github.com/mdc159/the-fleet/blob/main/hermes-onboarding/SKILL.md
+      requires: [skill:orchestration-playbook]
+
     - name: library
       description: The Library itself — private-first distribution of skills, agents, and prompts
       source: https://github.com/mdc159/bibliotec/blob/main/SKILL.md
@@ -54,8 +59,8 @@ library:
 
   prompts:
     - name: fleet-bootstrap
-      description: Bootstrap stanza for any agent harness — points at bibliotec, orchestrator role assumption, Done-means, PR discipline
-      source: https://github.com/mdc159/bibliotec/blob/main/prompts/fleet-bootstrap.md
+      description: Bootstrap stanza for any agent harness — points at the-fleet reference, orchestrator role assumption, Done-means, PR discipline
+      source: https://github.com/mdc159/the-fleet/blob/main/hermes-onboarding/references/fleet-bootstrap.md
 
     - name: wwidd
       description: What Would IndyDevDan Do — corpus-grounded methodologist persona; every "Dan does X" claim must cite a repo file or be relabeled extrapolation
