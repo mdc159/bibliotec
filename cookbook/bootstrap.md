@@ -21,7 +21,7 @@ git clone https://github.com/mdc159/bibliotec ~/.claude/skills/library
 
 ## 3. Configure model providers
 
-Pi resolves the routing tiers in `playbook/SKILL.md` to whatever subscriptions this machine holds. Configure the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
+Pi resolves the routing tiers in the `orchestration-playbook` catalog entry to whatever subscriptions this machine holds. Configure the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
 
 ## 4. Pull the playbook and roles
 

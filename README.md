@@ -2,7 +2,7 @@
 
 ![bibliotec — one catalog feeding the fleet](images/bibliotec_banner.svg)
 
-The fleet's source of truth: one catalog of skills, agents, and prompts that every machine and every agent harness pulls from. House doctrine lives in this repo; working tools live in their own repos and are referenced by URL — the `use` flow pulls either the same way. Nothing is copied until asked for; freshness is built into the act of using (`use` pulls first).
+The fleet's catalog: one index of skills, agents, and prompts that every machine and every agent harness pulls from. Doctrine and working tools live in the repositories they serve and are referenced by URL — the `use` flow pulls either the same way. Nothing is copied until asked for; freshness is built into the act of using (`use` pulls first).
 
 ## Start here
 
@@ -10,9 +10,9 @@ The fleet's source of truth: one catalog of skills, agents, and prompts that eve
 
 | Read | For |
 |---|---|
-| [`playbook/SKILL.md`](playbook/SKILL.md) | How the fleet operates: orchestrator role, worker launch, routing tiers, verification, PR discipline |
-| [`playbook/lessons.md`](playbook/lessons.md) | Retired conventions and the mistakes that retired them |
-| [`gauntlet/SKILL.md`](gauntlet/SKILL.md) | The defined exam a model passes to hold a fleet role |
+| [`orchestration-playbook`](https://github.com/mdc159/the-fleet/blob/main/playbook/SKILL.md) | How the fleet operates: orchestrator role, worker launch, routing tiers, verification, PR discipline |
+| [`playbook lessons`](https://github.com/mdc159/the-fleet/blob/main/playbook/lessons.md) | Retired conventions and the mistakes that retired them |
+| [`gauntlet`](https://github.com/mdc159/herdr-verifier/blob/main/gauntlet/SKILL.md) | The defined exam a model passes to hold a fleet role |
 | [`cookbook/kickoff.md`](cookbook/kickoff.md) | Starting a new project from any pane |
 | [`library.yaml`](library.yaml) | The catalog itself |
 
@@ -26,4 +26,4 @@ Principles this repo runs on: accurate description is the guarantee (docs verifi
 
 ## Credit
 
-Built on [IndyDevDan's **the-library**](https://github.com/disler/the-library) — his reference-catalog design (catalog-not-vendor, agentic cookbook, agent-as-runtime) is the foundation, and his broader practice is this fleet's reference implementation (see the playbook's authority section). Adaptations here: house doctrine vendored into the repo (playbook, gauntlet, roles, prompts), fleet bootstrap and kickoff recipes, and a PR-locked main. Upstream license retained in [`LICENSE`](LICENSE).
+Built on [IndyDevDan's **the-library**](https://github.com/disler/the-library) — his reference-catalog design (catalog-not-vendor, agentic cookbook, agent-as-runtime) is the foundation, and his broader practice is this fleet's reference implementation (see the playbook's authority section). Adaptations here: fleet bootstrap and kickoff recipes, and a PR-locked main. Fleet doctrine, practice, roles, and verification assets remain in their serving repositories and are cataloged by reference. Upstream license retained in [`LICENSE`](LICENSE).

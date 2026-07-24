@@ -5,7 +5,7 @@ For any fleet agent (Hermes, Claude, Pi workers, …) that has built something w
 ## Steps
 
 1. **Host the bytes.** Commit the asset to a GitHub repo the fleet can reach:
-   - House-doctrine-grade assets (broadly useful, fleet-identity) may live inside bibliotec itself (`gauntlet/`, `agents/`, `prompts/` set the pattern) — added via the same PR as the catalog entry.
+   - Place every asset in the repository it serves; bibliotec is the catalog and records the reference in the same PR or a follow-up catalog PR.
    - Everything else stays in its own repo (your machine's agent repo, a tool repo) — the catalog references it by URL, per the index-not-warehouse rule. A skill's `source` points at its `SKILL.md`; the `use` flow pulls the whole parent directory, so keep scripts/references beside it.
 2. **Write it portable.** Description verified where written, execution verified where run: note any platform or harness assumptions in the asset itself so consuming agents can port and verify locally. Role definitions keep `model: inherit`.
 3. **Catalog it.** Follow `cookbook/add.md` for the entry shape (name, description, source, optional `requires`), but land the `library.yaml` change **by pull request** — main is locked. Branch, add the entry (plus in-repo bytes if house-grade), open the PR.

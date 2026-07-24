@@ -11,27 +11,35 @@ default_dirs:
 
 library:
   skills:
+    - name: gauntlet
+      description: The Check-out Gauntlet as a defined exam — fixed steps, preserved specimens, answer key, pass/fail; certifies models for fleet roles
+      source: https://github.com/mdc159/herdr-verifier/blob/main/gauntlet/SKILL.md
+
     - name: herdr
       description: Control Herdr terminal multiplexer for coding agents (panes, tabs, workspaces, agent lifecycle)
       source: https://github.com/ogulcancelik/herdr/blob/main/SKILL.md
-
-    - name: planf3
-      description: Plans For Fable Five — planning meta-skill producing self-contained HTML plans with build/validate workflows
-      source: https://github.com/disler/planf3/blob/main/.claude/skills/planf3/SKILL.md
 
     - name: library
       description: The Library itself — private-first distribution of skills, agents, and prompts
       source: https://github.com/mdc159/bibliotec/blob/main/SKILL.md
 
-    - name: gauntlet
-      description: The Check-out Gauntlet as a defined exam — fixed steps, preserved specimens, answer key, pass/fail; certifies models for fleet roles
-      source: https://github.com/mdc159/bibliotec/blob/main/gauntlet/SKILL.md
-
     - name: orchestration-playbook
       description: Fleet orchestration procedures (worker launch, recipes, routing tiers, verification loop) with lessons register
-      source: https://github.com/mdc159/bibliotec/blob/main/playbook/SKILL.md
+      source: https://github.com/mdc159/the-fleet/blob/main/playbook/SKILL.md
+
+    - name: planf3
+      description: Plans For Fable Five — planning meta-skill producing self-contained HTML plans with build/validate workflows
+      source: https://github.com/disler/planf3/blob/main/.claude/skills/planf3/SKILL.md
 
   agents:
+    - name: builder
+      description: Implementation worker — builds and tests in its assigned project directory, reports via artifact
+      source: https://github.com/mdc159/the-fleet/blob/main/agents/builder.md
+
+    - name: scribe
+      description: Documentation worker — writes and maintains vault notes and reports in house style; docs lanes only
+      source: https://github.com/mdc159/the-fleet/blob/main/agents/scribe.md
+
     - name: verifier
       description: Read-only verifier persona (no write/edit) that independently re-checks builder turns — IndyDevDan verifier pattern
       source: https://github.com/disler/the-verifier-agent/blob/main/.pi/verifier/agents/verifier.md
@@ -40,17 +48,9 @@ library:
       description: Herdr-native read-only verifier persona with corrective feedback routed through named agents
       source: https://github.com/mdc159/herdr-verifier/blob/main/personas/verifier.md
 
-    - name: scribe
-      description: Documentation worker — writes and maintains vault notes and reports in house style; docs lanes only
-      source: https://github.com/mdc159/bibliotec/blob/main/agents/scribe.md
-
-    - name: builder
-      description: Implementation worker — builds and tests in its assigned project directory, reports via artifact
-      source: https://github.com/mdc159/bibliotec/blob/main/agents/builder.md
-
     - name: workhorse
       description: Bulk analysis and research worker — sweeps, reads, and reports via artifact files
-      source: https://github.com/mdc159/bibliotec/blob/main/agents/workhorse.md
+      source: https://github.com/mdc159/the-fleet/blob/main/agents/workhorse.md
 
   prompts:
     - name: fleet-bootstrap
