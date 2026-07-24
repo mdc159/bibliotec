@@ -15,7 +15,8 @@ Confirm each is on `PATH`, installing with the platform's package manager where 
 
 ```bash
 set -euo pipefail
-CATALOG_CHECKOUT="$HOME/.claude/skills/library"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
 git clone https://github.com/mdc159/bibliotec "$CATALOG_CHECKOUT"
 test -f "$CATALOG_CHECKOUT/SKILL.md"
 test -f "$CATALOG_CHECKOUT/library.yaml"
@@ -26,7 +27,8 @@ test -f "$CATALOG_CHECKOUT/library.yaml"
 ```bash
 set -euo pipefail
 FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
-FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
 if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
   git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
 fi
@@ -35,17 +37,25 @@ test -d "$FLEET_CHECKOUT/.git"
 
 ## 4. Hermes automated integration
 
-Use the helper from the full the-fleet checkout so it can manage and verify that checkout in place.
+Use the helper from the full the-fleet checkout so it can manage and verify both sibling checkouts in place.
 
 ```bash
 set -euo pipefail
-FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
 python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --skills-root "$SKILLS_ROOT" \
+  --catalog-checkout "$CATALOG_CHECKOUT" \
   --checkout "$FLEET_CHECKOUT" \
   --json
 ```
 
-The helper points the active Hermes profile at this checkout, installs one managed fleet-bootstrap block, validates the profile, and keeps the layout split between the catalog and the operational repo. It reads no credential files.
+The helper points the active Hermes profile at the shared skills root, installs one managed fleet-bootstrap block, validates both sibling checkouts, and keeps the layout split between the catalog and the operational repo. It reads no credential files.
 
 ## 5. Configure model providers
 
@@ -57,10 +67,18 @@ After provider setup, and only from a Herdr-managed pane (`HERDR_ENV=1`), run th
 
 ```bash
 set -euo pipefail
-FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+SKILLS_ROOT="${SKILLS_ROOT:-$HOME/.claude/skills}"
+CATALOG_CHECKOUT="${CATALOG_CHECKOUT:-$SKILLS_ROOT/library}"
+FLEET_CHECKOUT="${FLEET_CHECKOUT:-$SKILLS_ROOT/the-fleet}"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
 HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
 SMOKE_MODEL="<playbook cheap/iteration-tier provider/model>"
 python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --skills-root "$SKILLS_ROOT" \
+  --catalog-checkout "$CATALOG_CHECKOUT" \
   --checkout "$FLEET_CHECKOUT" \
   --hermes-home "$HERMES_HOME" \
   --smoke-test \

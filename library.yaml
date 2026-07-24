@@ -17,7 +17,7 @@ library:
 
     - name: herdr
       description: Control Herdr terminal multiplexer for coding agents (panes, tabs, workspaces, agent lifecycle)
-      source: https://github.com/ogulcancelik/herdr/blob/main/SKILL.md
+      source: https://github.com/ogulcancelik/herdr/blob/master/SKILL.md
 
     - name: hermes-onboarding
       description: Idempotent Hermes profile integration for the-fleet — external skill discovery, fleet bootstrap, validation, and optional Herdr/Pi smoke test
