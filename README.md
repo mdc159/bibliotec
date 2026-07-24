@@ -2,7 +2,7 @@
 
 ![bibliotec — one catalog feeding the fleet](images/bibliotec_banner.svg)
 
-The fleet's catalog: one index of skills, agents, and prompts that every machine and every agent harness pulls from. Doctrine and working tools live in the repositories they serve and are referenced by URL — the `use` flow pulls either the same way. Nothing is copied until asked for; freshness is built into the act of using (`use` pulls first).
+The fleet's catalog: one index of skills, agents, and prompts that every machine and every agent harness pulls from. Principles and working tools live in the repositories they serve and are referenced by URL — the `use` flow pulls either the same way. Nothing is copied until asked for; freshness is built into the act of using (`use` pulls first).
 
 ## Start here
 
@@ -26,4 +26,4 @@ Principles this repo runs on: accurate description is the guarantee (docs verifi
 
 ## Credit
 
-Built on [IndyDevDan's **the-library**](https://github.com/disler/the-library) — his reference-catalog design (catalog-not-vendor, agentic cookbook, agent-as-runtime) is the foundation, and his broader practice is this fleet's reference implementation (see the playbook's authority section). Adaptations here: fleet bootstrap and kickoff recipes, and a PR-locked main. Fleet doctrine, practice, roles, and verification assets remain in their serving repositories and are cataloged by reference. Upstream license retained in [`LICENSE`](LICENSE).
+Built on [IndyDevDan's **the-library**](https://github.com/disler/the-library) — his reference-catalog design (catalog-not-vendor, agentic cookbook, agent-as-runtime) is the foundation, and his broader practice is this fleet's reference implementation (see the playbook's authority section). Adaptations here: fleet bootstrap and kickoff recipes, and a PR-locked main. Fleet principles, practice, roles, and verification assets remain in their serving repositories and are cataloged by reference. Upstream license retained in [`LICENSE`](LICENSE).
