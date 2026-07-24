@@ -137,10 +137,10 @@ The `default`/`global` directories above are the **Claude Code** baseline. When 
 
 | Harness   | Skills install root                                                                                                            |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Hermes    | `$HERMES_HOME/skills/` — fallback `$LOCALAPPDATA/hermes/skills/` (Windows), `~/.hermes/skills/` (Unix) |
+| Hermes    | The active profile's **configured** skills root — `$SKILLS_ROOT` (default `~/.claude/skills`) when the fleet bootstrap ran; else `$HERMES_HOME/skills/` with fallback `$LOCALAPPDATA/hermes/skills/` (Windows), `~/.hermes/skills/` (Unix) |
 | Claude    | `library.yaml` `default_dirs` (`.claude/skills/` default, `~/.claude/skills/` global)                          |
 
-See [`cookbook/use.md`](cookbook/use.md) for the full resolution procedure and the install-verification step. Agents and prompts under a non-Claude harness follow that harness's own conventions; when unknown, fall back to the Claude `default_dirs` and note it for the user.
+An explicit `--harness <name>` other than Hermes or Claude has no catalog-known root: ask the user for the target root, or fall back to the Claude `default_dirs` and say so explicitly. See [`cookbook/use.md`](cookbook/use.md) for the full resolution procedure and the install-verification step. Agents and prompts under a non-Claude harness follow that harness's own conventions; when unknown, fall back to the Claude `default_dirs` and note it for the user.
 
 ## Library Repo Sync
 
