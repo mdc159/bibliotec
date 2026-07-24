@@ -14,41 +14,56 @@ Confirm each is on `PATH`, installing with the platform's package manager where 
 ## 2. Install bibliotec
 
 ```bash
-git clone https://github.com/mdc159/bibliotec ~/.claude/skills/library
+set -euo pipefail
+CATALOG_CHECKOUT="$HOME/.claude/skills/library"
+git clone https://github.com/mdc159/bibliotec "$CATALOG_CHECKOUT"
+test -f "$CATALOG_CHECKOUT/SKILL.md"
+test -f "$CATALOG_CHECKOUT/library.yaml"
 ```
 
-(Windows: the equivalent user-profile skills path; adapt and verify.) Confirm `SKILL.md` and `library.yaml` exist and `LIBRARY_REPO_URL` in `SKILL.md` reads `https://github.com/mdc159/bibliotec`.
-
-## 3. Hermes automated integration
-
-After the clone, a Hermes agent can apply and verify its harness-specific port in one command:
+## 3. Install the-fleet operational checkout
 
 ```bash
-python3 ~/.claude/skills/library/hermes-onboarding/scripts/hermes_onboard.py --json
+set -euo pipefail
+FLEET_REPO_URL="https://github.com/mdc159/the-fleet.git"
+FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+if [ ! -d "$FLEET_CHECKOUT/.git" ]; then
+  git clone "$FLEET_REPO_URL" "$FLEET_CHECKOUT"
+fi
+test -d "$FLEET_CHECKOUT/.git"
 ```
 
-From a Herdr-managed pane, include the live worker receipt:
+## 4. Hermes automated integration
+
+Use the helper from the full the-fleet checkout so it can manage and verify that checkout in place.
 
 ```bash
-python3 ~/.claude/skills/library/hermes-onboarding/scripts/hermes_onboard.py \
-  --smoke-test --smoke-model <playbook cheap/iteration-tier provider/model> --json
+set -euo pipefail
+FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --checkout "$FLEET_CHECKOUT" \
+  --json
 ```
 
-The helper points the active Hermes profile at this checkout, installs one managed fleet-bootstrap block, validates the profile, and preserves the smoke artifact. It reads no credential files. Pass `--hermes-home <profile-path>` for a non-default profile, and start a fresh Hermes session after success so the new global instructions load.
+The helper points the active Hermes profile at this checkout, installs one managed fleet-bootstrap block, validates the profile, and keeps the layout split between the catalog and the operational repo. It reads no credential files.
 
-Non-Hermes harnesses, and manual Hermes ports, continue with the remaining steps.
+## 5. Configure model providers
 
-## 4. Configure model providers
+Pi resolves the routing tiers in the `orchestration-playbook` catalog entry to whatever subscriptions this machine holds. Configure and log in to the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
 
-Pi resolves the routing tiers in the `orchestration-playbook` catalog entry to whatever subscriptions this machine holds. Configure the providers you have (zai, kimi-coding, openai-codex, openrouter, ollama); keys and OAuth logins are per-machine and never live in this repo.
+## 6. Optional smoke test
 
-## 5. Pull the playbook and roles
+After provider setup, and only from a Herdr-managed pane (`HERDR_ENV=1`), run the playbook's worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.
 
-Using the library skill (`/library use <name>`), or manually per `cookbook/use.md`:
-
-- `orchestration-playbook` — the fleet procedure; whoever orchestrates loads this
-- `scribe`, `builder`, `workhorse`, `verifier-herdr` — role definitions, as needed
-
-## 6. Smoke test
-
-Inside a herdr-managed pane (`HERDR_ENV=1`), run the playbook's worker launch once with a cheap-tier model and confirm the worker reaches `working`, writes its artifact, and settles. The machine is in the fleet when that passes.
+```bash
+set -euo pipefail
+FLEET_CHECKOUT="$HOME/.claude/skills/the-fleet"
+HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
+SMOKE_MODEL="<playbook cheap/iteration-tier provider/model>"
+python3 "$FLEET_CHECKOUT/hermes-onboarding/scripts/hermes_onboard.py" \
+  --checkout "$FLEET_CHECKOUT" \
+  --hermes-home "$HERMES_HOME" \
+  --smoke-test \
+  --smoke-model "$SMOKE_MODEL" \
+  --json
+```
