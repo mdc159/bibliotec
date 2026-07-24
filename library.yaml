@@ -36,6 +36,10 @@ library:
       description: Plans For Fable Five — planning meta-skill producing self-contained HTML plans with build/validate workflows
       source: https://github.com/disler/planf3/blob/main/.claude/skills/planf3/SKILL.md
 
+    - name: hermes-fleet-orchestration
+      description: Orchestrate GLM/GPT/K3 worker fleets from a Hermes orchestrator inside herdr 0.7.2-preview Windows panes — launch, completion-contract dispatch, sentinel-based supervision, receipt-gated closure
+      source: https://github.com/mdc159/the-fleet/blob/main/hermes-fleet-orchestration/SKILL.md
+
     - name: youtube-distill
       description: Turn a YouTube URL or local video into a citation-grounded, multimodal artifact — transcript, OCR'd frames, style routing, and citation-validated LLM distillation
       source: https://github.com/mdc159/youtube-transcripts/blob/master/skills/youtube-distill/SKILL.md
