@@ -40,6 +40,10 @@ library:
       description: Orchestrate GLM/GPT/K3 worker fleets from a Hermes orchestrator inside herdr 0.7.2-preview Windows panes — launch, completion-contract dispatch, sentinel-based supervision, receipt-gated closure
       source: https://github.com/mdc159/the-fleet/blob/main/hermes-fleet-orchestration/SKILL.md
 
+    - name: youtube-distill
+      description: Turn a YouTube URL or local video into a citation-grounded, multimodal artifact — transcript, OCR'd frames, style routing, and citation-validated LLM distillation
+      source: https://github.com/mdc159/youtube-transcripts/blob/master/skills/youtube-distill/SKILL.md
+
   agents:
     - name: builder
       description: Implementation worker — builds and tests in its assigned project directory, reports via artifact
