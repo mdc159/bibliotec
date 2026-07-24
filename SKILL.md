@@ -127,6 +127,21 @@ default_dirs:
 - If the user specifies a custom path, use that path.
 - Otherwise, use the `default` directory.
 
+### Harness-aware resolution
+
+The `default`/`global` directories above are the **Claude Code** baseline. When the consumer is a different harness, the target root follows the harness. Detection order:
+
+1. **Explicit override** — user passes `--harness <name>` (e.g. `library use foo --harness hermes`). Use it.
+2. **`HERMES_HOME` is set** — harness is **Hermes Agent**. Skills install to the Hermes skills root (table below).
+3. **Otherwise** — Claude Code; use `library.yaml` `default_dirs`.
+
+| Harness   | Skills install root                                                                                                            |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Hermes    | `$HERMES_HOME/skills/` — fallback `$LOCALAPPDATA/hermes/skills/` (Windows), `~/.hermes/skills/` (Unix) |
+| Claude    | `library.yaml` `default_dirs` (`.claude/skills/` default, `~/.claude/skills/` global)                          |
+
+See [`cookbook/use.md`](cookbook/use.md) for the full resolution procedure and the install-verification step. Agents and prompts under a non-Claude harness follow that harness's own conventions; when unknown, fall back to the Claude `default_dirs` and note it for the user.
+
 ## Library Repo Sync
 
 The library skill itself lives in `<LIBRARY_SKILL_DIR>` as a cloned git repo. When running `add` (which modifies `library.yaml`), always:

@@ -31,11 +31,26 @@ If the entry has a `requires` field:
 - Process all dependencies before the requested item
 
 ### 4. Determine Target Directory
-- Read `default_dirs` from `library.yaml`
-- If user said "global" or "globally" → use the `global` path
-- If user specified a custom path → use that path
-- Otherwise → use the `default` path
-- Select the correct section based on type (skills/agents/prompts)
+
+First resolve the **harness** (the agent that will consume the installed skill), then its skills root.
+
+**4a. Resolve the harness** (first match wins):
+
+1. User passed `--harness <name>` on the command (e.g. `library use foo --harness hermes`) → use `<name>`.
+2. Environment variable `HERMES_HOME` is set → harness is **Hermes Agent**.
+3. Otherwise → harness is **Claude Code** (the catalog default).
+
+**4b. Resolve the target root for the harness/type:**
+
+| Harness | Type | Target root |
+| --- | --- | --- |
+| Hermes | skills | `$HERMES_HOME/skills/` — if `HERMES_HOME` unset: `$LOCALAPPDATA/hermes/skills/` on Windows, else `~/.hermes/skills/` |
+| Hermes | agents / prompts | follow Hermes's own conventions; when unknown fall back to the Claude row and tell the user |
+| Claude | skills / agents / prompts | `library.yaml` `default_dirs` — `global` if user said "global", a custom path if given, else `default` |
+
+On Windows, `$HERMES_HOME` resolves to `C:\Users\<user>\AppData\Local\hermes` by default, so the Hermes skills root is `C:/Users/<user>/AppData/Local/hermes/skills/`. Verify the actual value before relying on it: `echo "${HERMES_HOME:-<unset>}"`.
+
+For a **skill**, the install target is `<root>/<name>/` (the whole parent directory is copied in, per step 5).
 
 ### 5. Fetch from Source
 
@@ -84,6 +99,12 @@ If the entry has a `requires` field:
 ### 6. Verify Installation
 - Confirm the target directory exists
 - Confirm the main file (SKILL.md, AGENT.md, or prompt file) exists in it
+- **Hermes only** — confirm the harness can see it: the skills root resolved in step 4 must be the one Hermes reads. Quick check (bash):
+  ```bash
+  root="${HERMES_HOME:-${LOCALAPPDATA:+$LOCALAPPDATA/hermes}}"; root="${root:-$HOME/.hermes}"/skills
+  ls "$root/<name>/SKILL.md"   # should print the path, not 'No such file'
+  ```
+  Hermes loads skills from this root on the next session, so a successful `ls` is the publication signal.
 - Report success with the installed path
 
 ### 7. Confirm
