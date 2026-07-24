@@ -17,7 +17,7 @@ library:
 
     - name: herdr
       description: Control Herdr terminal multiplexer for coding agents (panes, tabs, workspaces, agent lifecycle)
-      source: https://github.com/ogulcancelik/herdr/blob/main/SKILL.md
+      source: https://github.com/ogulcancelik/herdr/blob/master/SKILL.md
 
     - name: library
       description: The Library itself — private-first distribution of skills, agents, and prompts
