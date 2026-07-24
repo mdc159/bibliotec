@@ -36,6 +36,10 @@ library:
       description: Plans For Fable Five — planning meta-skill producing self-contained HTML plans with build/validate workflows
       source: https://github.com/disler/planf3/blob/main/.claude/skills/planf3/SKILL.md
 
+    - name: youtube-distill
+      description: Turn a YouTube URL or local video into a citation-grounded, multimodal artifact — transcript, OCR'd frames, style routing, and citation-validated LLM distillation
+      source: https://github.com/mdc159/youtube-transcripts/blob/master/skills/youtube-distill/SKILL.md
+
   agents:
     - name: builder
       description: Implementation worker — builds and tests in its assigned project directory, reports via artifact

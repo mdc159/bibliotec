@@ -22,3 +22,22 @@ Found a cataloged skill written for a different harness (a Hermes skill you want
 - **Differences structural** (the harness's internals genuinely diverge): publish the port as its own entry, suffixed by harness (`<name>-claude`), with provenance in the description pointing at the origin entry so lineage is tracked and improvements can propagate.
 
 The curator loop periodically reviews the catalog for fork drift and proposes merges.
+
+## Catalog a source-owned skill
+
+A **source-owned** skill keeps its bytes in the repository it serves; bibliotec holds only the catalog entry pointing at it. This is the preferred shape for any skill tightly bound to one tool's repo — the skill and the tool move together, so improvements can't drift apart.
+
+Recipe:
+
+1. **Bytes stay put.** The skill's `SKILL.md` (plus scripts/references beside it) lives in the serving repo, e.g. `skills/youtube-distill/` inside the `youtube-transcripts` repo. Do **not** copy the bytes into bibliotec — bibliotec is the catalog, not the warehouse (step 1 above).
+2. **Use the serving repo's real default branch in the URL.** Branches differ per repo — `youtube-transcripts` is on `master`, `bibliotec` is on `main`, `the-fleet` is on `main`. A wrong branch 404s the `use` clone. Confirm before writing the entry:
+   ```bash
+   gh api repos/mdc159/youtube-transcripts --jq .default_branch   # -> master
+   gh api repos/mdc159/bibliotec      --jq .default_branch   # -> main
+   ```
+   Then point `source` at `https://github.com/<org>/<repo>/blob/<default-branch>/skills/<name>/SKILL.md`.
+3. **Match the entry description to the asset.** Once the bytes are committed, copy the skill's frontmatter `description` (or a faithful summary) into the catalog entry so the index and the asset agree. If the entry lands before the bytes (catalog-first), revisit the description when the skill ships.
+4. **Follow the entry schema exactly** — `name`, `description`, `source`, optional `requires` (see `cookbook/add.md`). Skills point at `.../<name>/SKILL.md`; the `use` flow pulls the whole parent directory.
+5. **Land by PR** (main is locked). The bytes may land in the same cycle in the serving repo or already exist; `library use <name>` is the publication test once both are merged.
+
+Reference example in this catalog: [`youtube-distill`](../library.yaml) — bytes source-owned in `mdc159/youtube-transcripts` (`master`), entry in bibliotec (`main`).
