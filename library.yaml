@@ -64,4 +64,4 @@ library:
 
     - name: wwidd
       description: What Would IndyDevDan Do — corpus-grounded methodologist persona; every "Dan does X" claim must cite a repo file or be relabeled extrapolation
-      source: https://github.com/mdc159/bibliotec/blob/main/prompts/wwidd.md
+      source: https://github.com/mdc159/the-fleet/blob/main/prompts/wwidd.md
